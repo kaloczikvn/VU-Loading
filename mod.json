@@ -1,0 +1,11 @@
+{
+    "Name": "VU-Loading",
+    "Description": "Replaced and redesigned loading screens.",
+    "Authors": [ "KVN" ],
+    "Version": "1.0.0",
+    "HasVeniceEXT": true,
+    "HasWebUI": true,
+    "Dependencies": {
+        "veniceext": "^1.0.0"
+    }
+}

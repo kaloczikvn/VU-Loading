@@ -12,6 +12,7 @@ function VuLoadingServer:__init()
     self.m_MapName = nil
     self.m_GameMode = nil
     self.m_ServerName = nil
+    self.m_ServerDesc = nil
 end
 
 function VuLoadingServer:OnExtensionLoaded()
@@ -29,8 +30,12 @@ function VuLoadingServer:RegisterEvents()
 end
 
 function VuLoadingServer:OnLoadResources(p_LevelName, p_GameMode)
-    local s_Args = RCON:SendCommand('vars.serverName')
-    self.m_ServerName = s_Args[2]
+    local s_ArgsName = RCON:SendCommand('vars.serverName')
+    self.m_ServerName = s_ArgsName[2]
+
+    local s_ArgsDesc = RCON:SendCommand('vars.serverDescription')
+    self.m_ServerDesc = s_ArgsDesc[2]
+
     self.m_MapName = self:FixLevelName(p_LevelName)
     self.m_GameMode = p_GameMode
 
@@ -43,9 +48,9 @@ end
 
 function VuLoadingServer:SendLoadingInformation(p_Player)
     if p_Player ~= nil then
-        NetEvents:SendTo('VuLoadingInfo', p_Player, { self.m_MapName, self.m_GameMode, self.m_ServerName })
+        NetEvents:SendTo('VuLoadingInfo', p_Player, { self.m_MapName, self.m_GameMode, self.m_ServerName, self.m_ServerDesc })
     else
-        NetEvents:Broadcast('VuLoadingInfo', { self.m_MapName, self.m_GameMode, self.m_ServerName })
+        NetEvents:Broadcast('VuLoadingInfo', { self.m_MapName, self.m_GameMode, self.m_ServerName, self.m_ServerDesc })
     end
 end
 

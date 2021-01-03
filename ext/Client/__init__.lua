@@ -12,6 +12,7 @@ function VuLoadingClient:__init()
     self.m_MapName = nil
     self.m_GameMode = nil
     self.m_ServerName = nil
+    self.m_ServerDesc = nil
 
     self.m_Loading = false
     self.m_LoadUpdateDeltaTime = 0.0
@@ -72,6 +73,10 @@ function VuLoadingClient:OnVuLoadingInfo(p_Args)
     if p_Args[3] ~= nil then
         self.m_ServerName = p_Args[3]
     end
+
+    if p_Args[4] ~= nil then
+        self.m_ServerDesc = p_Args[4]
+    end
 end
 
 function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
@@ -83,7 +88,8 @@ function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
         local s_Data = {
             m_MapName = tostring(self.m_MapName),
             m_GameMode = tostring(self.m_GameMode),
-            m_ServerName = tostring(self.m_ServerName)
+            m_ServerName = tostring(self.m_ServerName),
+            m_ServerDesc = tostring(self.m_ServerDesc)
         }
         local s_DataJson = json.encode(s_Data)
         WebUI:ExecuteJS('SetInfo('.. s_DataJson ..');')

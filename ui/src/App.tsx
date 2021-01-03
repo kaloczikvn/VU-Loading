@@ -25,17 +25,20 @@ const App: React.FC = () => {
         setMapName(p_DataJson.m_MapName);
         setGameMode(p_DataJson.m_GameMode);
         setServerName(p_DataJson.m_ServerName);
+        setServerDesc(p_DataJson.m_ServerDesc);
         setLoading(true);
     }
 
     const [mapName, setMapName] = useState<string|null>(null);
     const [gameMode, setGameMode] = useState<string|null>(null);
     const [serverName, setServerName] = useState<string|null>(null);
+    const [serverDesc, setServerDesc] = useState<string|null>(null);
 
     window.HideLoading = () => {
         setMapName(null);
         setGameMode(null);
         setServerName(null);
+        setServerDesc(null);
         setLoading(false);
     }
 
@@ -47,6 +50,7 @@ const App: React.FC = () => {
         setMapName(keys[ keys.length * Math.random() << 0]);
 
         setServerName("KVN's Debug Server");
+        setServerDesc("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum eget lectus vitae imperdiet. Cras ultricies justo nibh, nec scelerisque nisl molestie sit amet.");
 
         setLoading(true);
     }
@@ -79,7 +83,12 @@ const App: React.FC = () => {
                                 Maps[mapName]
                             }
                         </h1>
-                        <h3>{serverName??''}</h3>
+                        <div className="serverInfo">
+                            <h3>{serverName??''}</h3>
+                            {serverDesc &&
+                                <p>{serverDesc??''}</p>
+                            }
+                        </div>
                     </div>
                     <div className="loader">
                         <Oval />

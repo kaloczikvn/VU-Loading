@@ -10,9 +10,13 @@ function VuLoadingClient:__init()
     self.m_ExtensionUnloadedEvent = Events:Subscribe("Extension:Unloaded", self, self.OnExtensionUnloaded)
 
     self.m_MapName = nil
+    self.m_MapCustom = nil
     self.m_GameMode = nil
+    self.m_GameModeCustom = nil
     self.m_ServerName = nil
     self.m_ServerDesc = nil
+    self.m_Rules = { }
+    self.m_TickRate = nil
 
     self.m_Loading = false
     self.m_LoadUpdateDeltaTime = 0.0
@@ -67,15 +71,31 @@ function VuLoadingClient:OnVuLoadingInfo(p_Args)
     end
 
     if p_Args[2] ~= nil then
-        self.m_GameMode = p_Args[2]
+        self.m_MapCustom = p_Args[2]
     end
 
     if p_Args[3] ~= nil then
-        self.m_ServerName = p_Args[3]
+        self.m_GameMode = p_Args[3]
     end
 
     if p_Args[4] ~= nil then
-        self.m_ServerDesc = p_Args[4]
+        self.m_GameModeCustom = p_Args[4]
+    end
+
+    if p_Args[5] ~= nil then
+        self.m_ServerName = p_Args[5]
+    end
+
+    if p_Args[6] ~= nil then
+        self.m_ServerDesc = p_Args[6]
+    end
+
+    if p_Args[7] ~= nil then
+        self.m_Rules = p_Args[7]
+    end
+
+    if p_Args[8] ~= nil then
+        self.m_TickRate = p_Args[8]
     end
 end
 
@@ -89,7 +109,11 @@ function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
             m_MapName = tostring(self.m_MapName),
             m_GameMode = tostring(self.m_GameMode),
             m_ServerName = tostring(self.m_ServerName),
-            m_ServerDesc = tostring(self.m_ServerDesc)
+            m_ServerDesc = tostring(self.m_ServerDesc),
+            m_MapCustom = tostring(self.m_MapCustom),
+            m_GameModeCustom = tostring(self.GameModeCustom),
+            m_Rules = self.m_Rules,
+            m_TickRate = self.m_TickRate,
         }
         local s_DataJson = json.encode(s_Data)
         WebUI:ExecuteJS('SetInfo('.. s_DataJson ..');')

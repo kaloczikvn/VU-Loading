@@ -1,5 +1,7 @@
 class "VuLoadingServer"
 
+require ("config")
+
 function VuLoadingServer:__init()
     -- Extension events
     self.m_ExtensionLoadedEvent = nil
@@ -10,9 +12,12 @@ function VuLoadingServer:__init()
     self.m_ExtensionUnloadedEvent = Events:Subscribe("Extension:Unloaded", self, self.OnExtensionUnloaded)
 
     self.m_MapName = nil
+    self.m_MapCustom = nil
     self.m_GameMode = nil
+    self.m_GameModeCustom = nil
     self.m_ServerName = nil
     self.m_ServerDesc = nil
+    self.m_TickRate = nil
 end
 
 function VuLoadingServer:OnExtensionLoaded()
@@ -36,8 +41,19 @@ function VuLoadingServer:OnLoadResources(p_LevelName, p_GameMode)
     local s_ArgsDesc = RCON:SendCommand('vars.serverDescription')
     self.m_ServerDesc = s_ArgsDesc[2]
 
+    local s_CustomMapName = ServerUtils:GetCustomMapName()
+    if s_CustomMapName ~= nil then
+        self.m_MapCustom = s_CustomMapName
+    end
     self.m_MapName = self:FixLevelName(p_LevelName)
+
+    local s_CustomGameMode = ServerUtils:GetCustomGameModeName()
+    if s_CustomGameMode ~= nil then
+        self.m_GameModeCustom = s_CustomGameMode
+    end
     self.m_GameMode = p_GameMode
+
+    self.m_TickRate = SharedUtils:GetTickrate()
 
     self:SendLoadingInformation()
 end
@@ -47,10 +63,21 @@ function VuLoadingServer:OnPlayerAuthenticated(p_Player)
 end
 
 function VuLoadingServer:SendLoadingInformation(p_Player)
+    local s_SendData = {
+        self.m_MapName,
+        self.m_MapCustom,
+        self.m_GameMode,
+        self.m_GameModeCustom,
+        self.m_ServerName,
+        self.m_ServerDesc,
+        CONFIG.RULES,
+        self.m_TickRate
+    }
+
     if p_Player ~= nil then
-        NetEvents:SendTo('VuLoadingInfo', p_Player, { self.m_MapName, self.m_GameMode, self.m_ServerName, self.m_ServerDesc })
+        NetEvents:SendTo('VuLoadingInfo', p_Player, s_SendData)
     else
-        NetEvents:Broadcast('VuLoadingInfo', { self.m_MapName, self.m_GameMode, self.m_ServerName, self.m_ServerDesc })
+        NetEvents:Broadcast('VuLoadingInfo', s_SendData)
     end
 end
 

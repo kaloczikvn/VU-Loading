@@ -7,38 +7,23 @@ interface Props {
 
 const Slideshow: React.FC<Props> = ({ map }) => {
     const host = "https://cdn.jsdelivr.net/gh/kaloczikvn/VU-Loading-Images@master/";
+
+    let list = ["01", "02", "03", "04"];
     return (
         <>
             {map &&
-                <Fade arrows={false} pauseOnHover={false} canSwipe={false} autoplay={true}>
-                    <div className="slideItem">
-                        <img 
-                            src={host + map + "/01.jpg"} 
-                            alt="slideItem0" 
-                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
-                        />
-                    </div>
-                    <div className="slideItem">
-                        <img 
-                            src={host + map + "/02.jpg"} 
-                            alt="slideItem1" 
-                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
-                        />
-                    </div>
-                    <div className="slideItem">
-                        <img 
-                            src={host + map + "/03.jpg"} 
-                            alt="slideItem2" 
-                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
-                        />
-                    </div>
-                    <div className="slideItem">
-                        <img 
-                            src={host + map + "/04.jpg"} 
-                            alt="slideItem3" 
-                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
-                        />
-                    </div>
+                <Fade arrows={false} pauseOnHover={false} canSwipe={false} autoplay={true} defaultIndex={(Math.floor(Math.random() * 3))}>
+                    {list.sort(() => Math.random() - 0.5).map((pic: string, index: number) => (
+                        <div className="slideItem" key={index}>
+                            <img 
+                                src={host + map + "/" + pic + ".jpg"} 
+                                alt="slideItem0" 
+                                onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
+                                onLoad={(e: any) => {e.target.style = {opacity: 1}}} 
+                                style={{opacity: 0}} 
+                            />
+                        </div>
+                    ))}
                 </Fade>
             }
         </>

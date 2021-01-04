@@ -12,16 +12,32 @@ const Slideshow: React.FC<Props> = ({ map }) => {
             {map &&
                 <Fade arrows={false} pauseOnHover={false} canSwipe={false} autoplay={true}>
                     <div className="slideItem">
-                        <img src={host + map + "/01.jpg"} alt="slideItem0" />
+                        <img 
+                            src={host + map + "/01.jpg"} 
+                            alt="slideItem0" 
+                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
+                        />
                     </div>
                     <div className="slideItem">
-                        <img src={host + map + "/02.jpg"}  alt="slideItem1" />
+                        <img 
+                            src={host + map + "/02.jpg"} 
+                            alt="slideItem1" 
+                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
+                        />
                     </div>
                     <div className="slideItem">
-                        <img src={host + map + "/03.jpg"}  alt="slideItem2" />
+                        <img 
+                            src={host + map + "/03.jpg"} 
+                            alt="slideItem2" 
+                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
+                        />
                     </div>
                     <div className="slideItem">
-                        <img src={host + map + "/04.jpg"}  alt="slideItem3" />
+                        <img 
+                            src={host + map + "/04.jpg"} 
+                            alt="slideItem3" 
+                            onError={(e: any) => {e.target.onerror = null; e.target.src = "images/default.jpg"}} 
+                        />
                     </div>
                 </Fade>
             }

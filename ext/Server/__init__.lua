@@ -43,12 +43,14 @@ function VuLoadingServer:OnLoadResources(p_LevelName, p_GameMode)
 
     local s_CustomMapName = ServerUtils:GetCustomMapName()
     if s_CustomMapName ~= nil then
+        print("Custom map name found: " .. tostring(s_CustomMapName))
         self.m_MapCustom = s_CustomMapName
     end
     self.m_MapName = self:FixLevelName(p_LevelName)
 
     local s_CustomGameMode = ServerUtils:GetCustomGameModeName()
     if s_CustomGameMode ~= nil then
+        print("Custom game mode found: " .. tostring(s_CustomGameMode))
         self.m_GameModeCustom = s_CustomGameMode
     end
     self.m_GameMode = p_GameMode

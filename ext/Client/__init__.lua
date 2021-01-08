@@ -111,7 +111,7 @@ function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
             m_ServerName = tostring(self.m_ServerName),
             m_ServerDesc = tostring(self.m_ServerDesc),
             m_MapCustom = tostring(self.m_MapCustom),
-            m_GameModeCustom = tostring(self.GameModeCustom),
+            m_GameModeCustom = tostring(self.m_GameModeCustom),
             m_Rules = self.m_Rules,
             m_TickRate = self.m_TickRate,
         }

@@ -17,6 +17,8 @@ function VuLoadingClient:__init()
     self.m_ServerDesc = nil
     self.m_Rules = { }
     self.m_TickRate = nil
+    
+    self.m_NeedUIUpdate = false
 
     self.m_Loading = false
     self.m_LoadUpdateDeltaTime = 0.0
@@ -66,45 +68,51 @@ function VuLoadingClient:OnLevelLoaded()
 end
 
 function VuLoadingClient:OnVuLoadingInfo(p_Args)
-    if p_Args[1] ~= nil then
+    if p_Args[1] ~= nil and self.m_MapName ~= p_Args[1] then
         self.m_MapName = p_Args[1]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[2] ~= nil then
+    if p_Args[2] ~= nil and self.m_MapCustom ~= p_Args[2] then
         self.m_MapCustom = p_Args[2]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[3] ~= nil then
+    if p_Args[3] ~= nil and self.m_GameMode ~= p_Args[3] then
         self.m_GameMode = p_Args[3]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[4] ~= nil then
+    if p_Args[4] ~= nil and self.m_GameModeCustom ~= p_Args[4] then
         self.m_GameModeCustom = p_Args[4]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[5] ~= nil then
+    if p_Args[5] ~= nil and self.m_ServerName ~= p_Args[5] then
         self.m_ServerName = p_Args[5]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[6] ~= nil then
+    if p_Args[6] ~= nil and self.m_ServerDesc ~= p_Args[6] then
         self.m_ServerDesc = p_Args[6]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[7] ~= nil then
+    if p_Args[7] ~= nil and self.m_Rules ~= p_Args[7] then
         self.m_Rules = p_Args[7]
+        self.m_NeedUIUpdate = true
     end
 
-    if p_Args[8] ~= nil then
+    if p_Args[8] ~= nil and self.m_TickRate ~= p_Args[8] then
         self.m_TickRate = p_Args[8]
+        self.m_NeedUIUpdate = true
     end
 end
 
 function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
     if self.m_Loading and
     self.m_LoadUpdateDeltaTime == 0.0 and
-    self.m_MapName ~= nil and
-    self.m_GameMode ~= nil and
-    self.m_ServerName ~= nil then
+    self.m_NeedUIUpdate == true then
         local s_Data = {
             m_MapName = tostring(self.m_MapName),
             m_GameMode = tostring(self.m_GameMode),
@@ -117,6 +125,8 @@ function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
         }
         local s_DataJson = json.encode(s_Data)
         WebUI:ExecuteJS('SetInfo('.. s_DataJson ..');')
+        
+        self.m_NeedUIUpdate = false
     end
 
     self.m_LoadUpdateDeltaTime = self.m_LoadUpdateDeltaTime + p_DeltaTime

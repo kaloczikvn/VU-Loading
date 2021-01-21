@@ -31,6 +31,7 @@ end
 
 function VuLoadingServer:RegisterEvents()
     self.m_LoadResourcesInfoEvent = Events:Subscribe('Level:LoadResources', self, self.OnLoadResources)
+    self.m_LoadingInfoEvent = Events:Subscribe('Level:LoadingInfo', self, self.OnLevelLoadingInfos)
     self.m_PlayerAuthenticatedEvent = Events:Subscribe('Player:Authenticated', self, self.OnPlayerAuthenticated)
 end
 
@@ -58,6 +59,28 @@ function VuLoadingServer:OnLoadResources(p_LevelName, p_GameMode)
     self.m_TickRate = SharedUtils:GetTickrate()
 
     self:SendLoadingInformation()
+end
+
+function VuLoadingServer:OnLevelLoadingInfos()
+    local s_NeedsUpdate = false
+
+    local s_CustomMapName = ServerUtils:GetCustomMapName()
+    if s_CustomMapName ~= nil and self.m_MapCustom ~= s_CustomMapName then
+        print("Custom map name found: " .. tostring(s_CustomMapName))
+        self.m_MapCustom = s_CustomMapName
+        s_NeedsUpdate = true
+    end
+
+    local s_CustomGameMode = ServerUtils:GetCustomGameModeName()
+    if s_CustomGameMode ~= nil and self.m_GameModeCustom ~= s_CustomGameMode then
+        print("Custom game mode found: " .. tostring(s_CustomGameMode))
+        self.m_GameModeCustom = s_CustomGameMode
+        s_NeedsUpdate = true
+    end
+
+    if s_NeedsUpdate then
+        self:SendLoadingInformation()
+    end
 end
 
 function VuLoadingServer:OnPlayerAuthenticated(p_Player)

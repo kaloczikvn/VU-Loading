@@ -1,5 +1,7 @@
 class "VuLoadingClient"
 
+require "__shared/config"
+
 function VuLoadingClient:__init()
     -- Extension events
     self.m_ExtensionLoadedEvent = nil
@@ -15,7 +17,6 @@ function VuLoadingClient:__init()
     self.m_GameModeCustom = nil
     self.m_ServerName = nil
     self.m_ServerDesc = nil
-    self.m_Rules = { }
     self.m_TickRate = nil
     
     self.m_NeedUIUpdate = false
@@ -98,13 +99,8 @@ function VuLoadingClient:OnVuLoadingInfo(p_Args)
         self.m_NeedUIUpdate = true
     end
 
-    if p_Args[7] ~= nil and self.m_Rules ~= p_Args[7] then
-        self.m_Rules = p_Args[7]
-        self.m_NeedUIUpdate = true
-    end
-
-    if p_Args[8] ~= nil and self.m_TickRate ~= p_Args[8] then
-        self.m_TickRate = p_Args[8]
+    if p_Args[7] ~= nil and self.m_TickRate ~= p_Args[7] then
+        self.m_TickRate = p_Args[7]
         self.m_NeedUIUpdate = true
     end
 end
@@ -120,8 +116,9 @@ function VuLoadingClient:OnEngineUpdate(p_DeltaTime)
             m_ServerDesc = tostring(self.m_ServerDesc),
             m_MapCustom = tostring(self.m_MapCustom),
             m_GameModeCustom = tostring(self.m_GameModeCustom),
-            m_Rules = self.m_Rules,
+            m_Rules = CONFIG.RULES,
             m_TickRate = self.m_TickRate,
+            m_Maps = CONFIG.MAPS,
         }
         local s_DataJson = json.encode(s_Data)
         WebUI:ExecuteJS('SetInfo('.. s_DataJson ..');')

@@ -120,6 +120,7 @@ h6 {
     bottom: 5vw;
     z-index: 999;
     color: #fff;
+    text-shadow: 0 .002vw .7vw rgba(0, 0, 0, 0.6);
 
     h2 {
         color: #e14d43;
@@ -144,6 +145,7 @@ h6 {
     padding: 0.8vw 0 0.8vw 1vw;
     background: rgba(0,0,0,0.6);
     background: linear-gradient(90deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 80%);
+    text-shadow: 0 .002vw .7vw rgba(0, 0, 0, 0.6);
 
     &:first-of-type {
         margin-top: 1.6vw;
@@ -174,7 +176,7 @@ h6 {
         font-weight: 400;
         max-width: 35vw;
         font-weight: 200;
-        opacity: .6;
+        opacity: .8;
     }
 
     ul {

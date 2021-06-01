@@ -1,6 +1,6 @@
 class "VuLoadingServer"
 
-require ("config")
+require "__shared/config"
 
 function VuLoadingServer:__init()
     -- Extension events
@@ -95,7 +95,6 @@ function VuLoadingServer:SendLoadingInformation(p_Player)
         self.m_GameModeCustom,
         self.m_ServerName,
         self.m_ServerDesc,
-        CONFIG.RULES,
         self.m_TickRate
     }
 

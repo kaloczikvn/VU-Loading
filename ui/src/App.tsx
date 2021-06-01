@@ -29,6 +29,7 @@ const App: React.FC = () => {
     const [customGameMode, setCustomGameMode] = useState<string|null>(null);
     const [serverDesc, setServerDesc] = useState<string|null>(null);
     const [serverRules, setServerRules] = useState<string[]|null>(null);
+    const [customMapImages, setCustomMapImages] = useState<any>(null);
     const [tickRate, setTickRate] = useState<number|null>(null);
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,8 +49,12 @@ const App: React.FC = () => {
             setCustomGameMode(p_DataJson.m_GameModeCustom);
         }
         
-        if (p_DataJson.m_Rules !== undefined && p_DataJson.m_Rules !== "nil" && p_DataJson.m_Rules.length > 0) {
+        if (p_DataJson.m_Rules !== undefined && p_DataJson.m_Rules !== "nil") {
             setServerRules(p_DataJson.m_Rules);
+        }
+
+        if (p_DataJson.m_Maps !== undefined && p_DataJson.m_Maps !== "nil" && Object.values(p_DataJson.m_Maps).length > 0) {
+            setCustomMapImages(p_DataJson.m_Maps);
         }
 
         setTickRate(p_DataJson.m_TickRate)
@@ -65,6 +70,7 @@ const App: React.FC = () => {
         setServerName(null);
         setServerDesc(null);
         setServerRules(null);
+        setCustomMapImages(null);
         setTickRate(null);
         setLoading(false);
     }
@@ -87,6 +93,23 @@ const App: React.FC = () => {
             "Rule number 5",
         ]);
 
+        //setCustomMapName("KVN's test map")
+
+        setCustomMapImages({
+            "MP_001": [
+                "https://images.unsplash.com/photo-1622032494057-3bdc6f355e4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                "https://images.unsplash.com/photo-1621570274614-441323d10052?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
+                "https://images.unsplash.com/photo-1622019448666-284a54cc7ed0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                "https://images.unsplash.com/photo-1622020619472-1ce723164183?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+            ],
+            "KVN's test map": [
+                "https://images.unsplash.com/photo-1622032494057-3bdc6f355e4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                "https://images.unsplash.com/photo-1621570274614-441323d10052?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
+                "https://images.unsplash.com/photo-1622019448666-284a54cc7ed0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+                "https://images.unsplash.com/photo-1622020619472-1ce723164183?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+            ]
+        });
+
         setTickRate(120);
 
         setLoading(true);
@@ -108,7 +131,11 @@ const App: React.FC = () => {
 
             {loading &&
                 <div className="VuLoading">
-                    <Slideshow map={mapName} />
+                    <Slideshow 
+                        map={mapName}
+                        customMapName={customMapName}
+                        customMapImages={customMapImages}
+                    />
                     <div className="title">
                         <h2>
                             {customGameMode !== null 
@@ -160,7 +187,7 @@ const App: React.FC = () => {
                         }
                     </div>
                     <div className="loader">
-                        <Oval />
+                        <Oval width="3vw" height="3vw" />
                     </div>
                 </div>
             }

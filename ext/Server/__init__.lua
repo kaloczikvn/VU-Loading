@@ -42,18 +42,10 @@ function VuLoadingServer:OnLoadResources(p_LevelName, p_GameMode)
     local s_ArgsDesc = RCON:SendCommand('vars.serverDescription')
     self.m_ServerDesc = s_ArgsDesc[2]
 
-    local s_CustomMapName = ServerUtils:GetCustomMapName()
-    if s_CustomMapName ~= nil then
-        print("Custom map name found: " .. tostring(s_CustomMapName))
-        self.m_MapCustom = s_CustomMapName
-    end
+    self.m_MapCustom = ServerUtils:GetCustomMapName()
     self.m_MapName = self:FixLevelName(p_LevelName)
 
-    local s_CustomGameMode = ServerUtils:GetCustomGameModeName()
-    if s_CustomGameMode ~= nil then
-        print("Custom game mode found: " .. tostring(s_CustomGameMode))
-        self.m_GameModeCustom = s_CustomGameMode
-    end
+    self.m_GameModeCustom = ServerUtils:GetCustomGameModeName()
     self.m_GameMode = p_GameMode
 
     self.m_TickRate = SharedUtils:GetTickrate()
@@ -65,14 +57,14 @@ function VuLoadingServer:OnLevelLoadingInfos()
     local s_NeedsUpdate = false
 
     local s_CustomMapName = ServerUtils:GetCustomMapName()
-    if s_CustomMapName ~= nil and self.m_MapCustom ~= s_CustomMapName then
+    if self.m_MapCustom ~= s_CustomMapName then
         print("Custom map name found: " .. tostring(s_CustomMapName))
         self.m_MapCustom = s_CustomMapName
         s_NeedsUpdate = true
     end
 
     local s_CustomGameMode = ServerUtils:GetCustomGameModeName()
-    if s_CustomGameMode ~= nil and self.m_GameModeCustom ~= s_CustomGameMode then
+    if self.m_GameModeCustom ~= s_CustomGameMode then
         print("Custom game mode found: " .. tostring(s_CustomGameMode))
         self.m_GameModeCustom = s_CustomGameMode
         s_NeedsUpdate = true

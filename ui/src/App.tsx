@@ -34,8 +34,6 @@ const App: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false);
     window.SetInfo = (p_DataJson: any) => {
-        console.log(p_DataJson);
-
         setMapName(p_DataJson.m_MapName);
         setGameMode(p_DataJson.m_GameMode);
         setServerName(p_DataJson.m_ServerName);

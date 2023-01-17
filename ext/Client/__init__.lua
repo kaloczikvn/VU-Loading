@@ -74,7 +74,7 @@ function VuLoadingClient:OnVuLoadingInfo(p_Args)
         self.m_NeedUIUpdate = true
     end
 
-    if p_Args[2] ~= nil and self.m_MapCustom ~= p_Args[2] then
+    if self.m_MapCustom ~= p_Args[2] then
         self.m_MapCustom = p_Args[2]
         self.m_NeedUIUpdate = true
     end
@@ -84,7 +84,7 @@ function VuLoadingClient:OnVuLoadingInfo(p_Args)
         self.m_NeedUIUpdate = true
     end
 
-    if p_Args[4] ~= nil and self.m_GameModeCustom ~= p_Args[4] then
+    if self.m_GameModeCustom ~= p_Args[4] then
         self.m_GameModeCustom = p_Args[4]
         self.m_NeedUIUpdate = true
     end

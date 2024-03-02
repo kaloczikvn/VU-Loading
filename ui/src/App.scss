@@ -1,83 +1,93 @@
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-Black.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Blinker';
-    src: url('./assets/font/Blinker-Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Blinker";
+  src: url("./assets/font/Blinker-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    color: #fff;
-    font-family: "Blinker";
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow: hidden;
-    -webkit-user-select: none;
-    user-select: none;
-    font-family: 'Blinker';
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-family: "Blinker";
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: "Blinker";
+  font-size: 3vh;
 }
 
 h1,
@@ -86,125 +96,118 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  display: block;
 }
 
 #debug {
-    display: none !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999999999;
+  display: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
 }
 
 .VuLoading {
-    background: #000;
+  background: #000;
 }
 
 .slideItem {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 
-    & > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .title {
-    position: absolute;
-    left: 5vw;
-    bottom: 5vw;
-    z-index: 999;
-    color: #fff;
-    text-shadow: 0 .002vw .7vw rgba(0, 0, 0, 0.6);
+  position: absolute;
+  left: 10vh;
+  bottom: 10vh;
+  z-index: 999;
+  color: #fff;
+  text-shadow: 0 0.002rem 0.5rem rgba(0, 0, 0, 0.6);
 
-    h2 {
-        color: #e14d43;
-        font-size: 1.8229166666666667vw;
-        line-height: 1;
-        text-transform: uppercase;
-        font-weight: 400;
-        margin-bottom: .4vw;
-    }
+  h2 {
+    color: #e14d43;
+    font-size: 1rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
 
-    h1 {
-        font-size: 2.864583333333333vw;
-        line-height: 1;
-        text-transform: uppercase;
-        font-weight: 400;
-    }
+  h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
 }
 
 .serverInfo {
-    margin-top: .8vw;
-    border-left: 0.18vw solid #e14d43;
-    padding: 0.8vw 0 0.8vw 1vw;
-    background: rgba(0,0,0,0.6);
-    background: linear-gradient(90deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 80%);
-    text-shadow: 0 .002vw .7vw rgba(0, 0, 0, 0.6);
+  margin-top: 0.8rem;
+  border-left: 0.18rem solid #e14d43;
+  padding: 0.8rem 0 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+  text-shadow: 0 0.002rem 0.7rem rgba(0, 0, 0, 0.6);
 
-    &:first-of-type {
-        margin-top: 1.6vw;
-    }
+  &:first-of-type {
+    margin-top: 0.8rem;
+  }
 
-    h3 {
-        font-size: 1.3456666666666665vw;
-        line-height: 1;
-        font-weight: 400;
-        margin: 0;
-    }
+  h3 {
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 400;
+    margin: 0 0 0.5rem;
+  }
 
-    .tickRate {
-        margin: 0 0 0 .85vw;
-        font-size: 1.0416666666666665vw;
-        line-height: 1.35;
-        font-weight: 400;
-        max-width: 35vw;
-        font-weight: 400;
-        color: #e14d43;
-        display: inline-block;
-    }
+  .tickRate {
+    margin: 0 0 0 0.3rem;
+    font-size: 0.65rem;
+    line-height: 0.65rem;
+    font-weight: 400;
+    color: #e14d43;
+    display: inline-block;
+  }
 
-    p {
-        margin: .8vw 0 0;
-        font-size: 1.0416666666666665vw;
-        line-height: 1.35;
-        font-weight: 400;
-        max-width: 35vw;
-        font-weight: 200;
-        opacity: .8;
-    }
+  p {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.1rem;
+    font-weight: 400;
+    max-width: 35vw;
+    color: #bebebe;
+  }
 
-    ul {
-        margin: 0;
-        padding: 0 0 0 2vw;
-        font-size: 1.0416666666666665vw;
-        line-height: 1.35;
-        font-weight: 400;
-    }
+  ul {
+    margin: 0;
+    padding: 0 0 0 1rem;
+    font-size: 0.7rem;
+    line-height: 1.1rem;
+    font-weight: 400;
+  }
 }
 
 .loader {
-    position: absolute;
-    right: 8vw;
-    bottom: 6vw;
-    z-index: 999;
-    color: #fff;
+  position: absolute;
+  right: 16vh;
+  bottom: 12vh;
+  z-index: 999;
+  color: #fff;
 
-    img {
-        height: auto;
-        width: 5vw;
-    }
-
-    h6 {
-        font-size: 1vw;
-        text-transform: uppercase;
-        text-align: center;
-        margin: 1vh 0 0 0;
-        font-weight: 400;
-    }
+  svg {
+    height: auto;
+    width: 5vh;
+  }
 }

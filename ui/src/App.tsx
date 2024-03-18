@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slideshow from "./components/Slideshow";
 import { DefaultGameModes, handleGetGameModeName } from "./helpers/DefaultGameModes";
-import { DefaultMaps, IMap, handleGetMapName } from "./helpers/DefaultMaps";
+import { DefaultMaps, handleGetMapName } from "./helpers/DefaultMaps";
 
 import "react-slideshow-image/dist/styles.css";
 import "./App.scss";

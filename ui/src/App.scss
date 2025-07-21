@@ -1,93 +1,97 @@
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-ExtraLight.woff2") format("woff2");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-ExtraLight.ttf');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-ExtraBold.ttf');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    coh-font-sdf: off;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-Black.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    coh-font-sdf: off;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    coh-font-sdf: off;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    coh-font-sdf: off;
 }
 
 @font-face {
-  font-family: "Blinker";
-  src: url("./assets/font/Blinker-Thin.woff2") format("woff2");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Blinker';
+    src: url('./assets/font/Blinker-Thin.ttf');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+    coh-font-sdf: off;
 }
 
 * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  image-rendering: pixelated;
-  -ms-interpolation-mode: nearest-neighbor;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 img {
-  user-drag: none;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  color: #fff;
-  font-family: "Blinker";
-  font-weight: 500;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow: hidden;
-  -webkit-user-select: none;
-  user-select: none;
-  font-family: "Blinker";
-  font-size: 3vh;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-family: 'Blinker';
+    font-weight: 500;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    user-select: none;
+    font-size: 3vh;
 }
 
 h1,
@@ -96,118 +100,131 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 button {
-  display: block;
+    display: block;
 }
 
 #debug {
-  display: none !important;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999999999;
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999;
 }
 
 .VuLoading {
-  background: #000;
+    background: #000;
 }
 
 .slideItem {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
 
-  & > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    &-Image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position-y: 50%;
+        background-position-x: 50%;
+    }
 }
 
 .title {
-  position: absolute;
-  left: 10vh;
-  bottom: 10vh;
-  z-index: 999;
-  color: #fff;
-  text-shadow: 0 0.002rem 0.5rem rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 10vh;
+    bottom: 10vh;
+    z-index: 999;
+    color: #fff;
+    text-shadow: 0 0.002rem 0.5rem rgba(0, 0, 0, 0.6);
 
-  h2 {
-    color: #e14d43;
-    font-size: 1rem;
-    line-height: 1rem;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
+    h2 {
+        color: #e14d43;
+        font-size: 1rem;
+        line-height: 1rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
 
-  h1 {
-    font-size: 2rem;
-    line-height: 2rem;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
+    h1 {
+        font-size: 2rem;
+        line-height: 2rem;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
 }
 
 .serverInfo {
-  margin-top: 0.8rem;
-  border-left: 0.18rem solid #e14d43;
-  padding: 0.8rem 0 0.8rem 1rem;
-  background: rgba(0, 0, 0, 0.6);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
-  text-shadow: 0 0.002rem 0.7rem rgba(0, 0, 0, 0.6);
-
-  &:first-of-type {
     margin-top: 0.8rem;
-  }
+    border-left: 0.18rem solid #e14d43;
+    padding: 0.8rem 0 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+    text-shadow: 0 0.002rem 0.7rem rgba(0, 0, 0, 0.6);
 
-  h3 {
-    font-size: 1rem;
-    line-height: 1rem;
-    font-weight: 400;
-    margin: 0 0 0.5rem;
-  }
+    h3 {
+        font-size: 1rem;
+        line-height: 1rem;
+        font-weight: 400;
+        margin: 0 0 0.5rem;
+        display: flex;
+        align-items: center;
+    }
 
-  .tickRate {
-    margin: 0 0 0 0.3rem;
-    font-size: 0.65rem;
-    line-height: 0.65rem;
-    font-weight: 400;
-    color: #e14d43;
-    display: inline-block;
-  }
+    .tickRate {
+        margin: 0 0 0 0.3rem;
+        font-size: 0.6rem;
+        line-height: 0.65rem;
+        font-weight: 400;
+        color: #e14d43;
+        display: flex;
+    }
 
-  p {
-    margin: 0;
-    font-size: 0.7rem;
-    line-height: 1.1rem;
-    font-weight: 400;
-    max-width: 35vw;
-    color: #bebebe;
-  }
+    p {
+        margin: 0;
+        font-size: 0.7rem;
+        line-height: 1.1rem;
+        font-weight: 400;
+        max-width: 35vw;
+        color: #bebebe;
+    }
 
-  ul {
-    margin: 0;
-    padding: 0 0 0 1rem;
-    font-size: 0.7rem;
-    line-height: 1.1rem;
-    font-weight: 400;
-  }
+    ul {
+        margin: 0;
+        padding: 0 0 0 1rem;
+        font-size: 0.7rem;
+        line-height: 1.1rem;
+        font-weight: 400;
+    }
 }
 
 .loader {
-  position: absolute;
-  right: 16vh;
-  bottom: 12vh;
-  z-index: 999;
-  color: #fff;
+    position: absolute;
+    right: 16vh;
+    bottom: 12vh;
+    z-index: 999;
+    color: #fff;
 
-  svg {
-    height: auto;
-    width: 5vh;
-  }
+    svg {
+        height: 5vh;
+        width: 5vh;
+        animation: rotate-90-cw 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes rotate-90-cw {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }

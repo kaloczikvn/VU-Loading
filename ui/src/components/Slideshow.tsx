@@ -1,61 +1,50 @@
-import React from "react";
-import { Fade } from "react-slideshow-image";
+import React, { memo, useMemo } from 'react';
+import { Fade } from 'react-slideshow-image';
 
 interface IProps {
-  mapName: string | null;
-  customMapName: string | null;
-  customMapImages: any;
+    mapName: string | null;
+    customMapName: string | null;
+    customMapImages: any;
 }
 
-const HOST = "https://cdn.jsdelivr.net/gh/kaloczikvn/VU-Loading-Images@master";
+const HOST = 'https://cdn.jsdelivr.net/gh/kaloczikvn/VU-Loading-Images@master';
+const DEFAULT_INDEX = Math.floor(Math.random() * 3);
 
 const Slideshow: React.FC<IProps> = ({ mapName, customMapName, customMapImages }) => {
-  if (!mapName) {
-    return <></>;
-  }
+    const imagesMemo = useMemo(() => {
+        if (!mapName) return [];
 
-  const getImages = () => {
-    if (customMapImages !== null) {
-      if (customMapName && customMapImages[customMapName]) {
-        return customMapImages[customMapName];
-      }
+        if (customMapImages !== null) {
+            if (customMapName && customMapImages[customMapName]) {
+                return customMapImages[customMapName];
+            }
 
-      if (customMapImages[mapName]) {
-        return customMapImages[mapName];
-      }
+            if (customMapImages[mapName]) {
+                return customMapImages[mapName];
+            }
+        }
+
+        const _tempImages = [];
+        for (let i = 1; i <= 4; i++) {
+            _tempImages.push(`${HOST}/${mapName}/0${i}.jpg`);
+        }
+
+        return _tempImages.sort(() => Math.random() - 0.5);
+    }, [mapName, customMapName, customMapImages]);
+
+    if (imagesMemo.length === 0) {
+        return null;
     }
 
-    const _tempImages = [];
-    for (let i = 1; i <= 4; i++) {
-      _tempImages.push(`${HOST}/${mapName}/0${i}.jpg`);
-    }
-    return _tempImages;
-  };
-
-  const images = getImages();
-
-  return (
-    <Fade arrows={false} pauseOnHover={false} canSwipe={false} autoplay={true} defaultIndex={Math.floor(Math.random() * 3)}>
-      {images
-        .sort(() => Math.random() - 0.5)
-        .map((pic: string, index: number) => (
-          <div className="slideItem" key={`${mapName}-${index}`}>
-            <img
-              src={pic}
-              alt=""
-              onError={(e: any) => {
-                e.target.onerror = null;
-                e.target.src = "images/default.jpg";
-              }}
-              onLoad={(e: any) => {
-                e.target.style = { opacity: 1 };
-              }}
-              style={{ opacity: 0 }}
-            />
-          </div>
-        ))}
-    </Fade>
-  );
+    return (
+        <Fade arrows={false} pauseOnHover={false} canSwipe={false} autoplay defaultIndex={DEFAULT_INDEX}>
+            {imagesMemo.map((imageUrl: string, index: number) => (
+                <div className="slideItem" key={`${mapName}-${index}`}>
+                    <div className="slideItem-Image" style={{ backgroundImage: `url(${imageUrl})` }} />
+                </div>
+            ))}
+        </Fade>
+    );
 };
 
-export default Slideshow;
+export default memo(Slideshow);

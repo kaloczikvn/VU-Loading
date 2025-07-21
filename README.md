@@ -12,7 +12,7 @@ This mod replaces every loading screen with new and redesigned 4K screens.
 
 ## run with Coherent Labs Player
 
-**important** remember to use your path for the Player folder (replace `D:\Gameface-1.65.2.1-Pro`).
+**important**: remember to use your path for the Player folder (replace `D:\Gameface-1.65.2.1-Pro`).
 
 - Run `yarn build`.
 - Copy the `dist` output content (index.html, style.css, app.umd.js, images).

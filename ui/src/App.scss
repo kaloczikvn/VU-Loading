@@ -66,8 +66,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
 }
 
 img {
@@ -108,6 +106,11 @@ button {
     display: block;
 }
 
+#root {
+    width: 100%;
+    height: 100%;
+}
+
 #debug {
     display: none !important;
     position: fixed;
@@ -118,6 +121,8 @@ button {
 
 .VuLoading {
     background: #000;
+    width: 100%;
+    height: 100%;
 }
 
 .slideItem {
@@ -209,22 +214,27 @@ button {
     bottom: 12vh;
     z-index: 999;
     color: #fff;
-
-    svg {
-        height: 5vh;
-        width: 5vh;
-        animation: rotate-90-cw 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        animation-iteration-count: infinite;
-    }
+    height: 10vh;
+    width: 10vh;
+    animation: rotate 3s cubic-bezier(0.42, 0, 0.42, 1) infinite;
+    animation-iteration-count: infinite;
+    background-image: url('/images/loader.png');
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 
-@keyframes rotate-90-cw {
+@keyframes rotate {
     0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    50% {
+        filter: blur(0px);
+        opacity: 1;
     }
     100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
+        filter: blur(12px);
+        opacity: 0;
     }
 }
